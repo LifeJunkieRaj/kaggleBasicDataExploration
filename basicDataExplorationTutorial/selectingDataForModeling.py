@@ -1,12 +1,14 @@
 import pandas as pd
-from sklearn.tree import DecisionTreeRegressor
+
 
 # save filepath to variable for easier access
 melbourne_file_path = 'melb_data.csv'
 # read the data and store data in DataFrame titled melbourne_data
 melbourne_data = pd.read_csv(melbourne_file_path)
-melbourne_data.columns
 # print(melbourne_data.columns) # <== columns just returns an list of the headings of each column in the dataset
+melbourne_data.columns
+
+# save a copy of the DataFrame with any data that is not available (.dropna(axis=)) and store it in the variable melbourne_data
 melbourne_data = melbourne_data.dropna(axis=0)
 # print(melbourne_data)
 
@@ -19,9 +21,9 @@ melbourne_feature = ["Rooms", "Bathroom", "Landsize", "Lattitude", "Longtitude"]
 # By convention the Data is called X 
 X = melbourne_data[melbourne_feature]
 # Remember that the describe() method will print a summary of the data and in this case that data will be the Columns stored in melbourne_feature which are then specifically referenced in the melbourne_data data set which is now stored in X
-# print(X.describe()) <== We need to frequently check our data with the describe() method
+print(X.describe()) # <== We need to frequently check our data with the describe() method
 # head() is a method which shows the five top rows
-# print(X.head())  
+print(X.head())  
 
 # The steps to building and using a model are:
 
@@ -30,6 +32,7 @@ X = melbourne_data[melbourne_feature]
 #     Predict: Just what it sounds like
 #     Evaluate: Determine how accurate the model's predictions are.
 
+from sklearn.tree import DecisionTreeRegressor
 
 # Define model. Specify a number for random_state to ensure same results each run
 melbourne_model = DecisionTreeRegressor(random_state=1)
