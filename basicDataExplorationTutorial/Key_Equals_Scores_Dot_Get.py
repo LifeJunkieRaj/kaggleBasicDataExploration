@@ -15,7 +15,7 @@
 candidate_max_leaf_nodes = [5, 25, 50, 100, 250, 500]
 scores = {leaf_size: max(leaf_size, 123, 3, 58) for leaf_size in candidate_max_leaf_nodes}
 
-best_tree_size = min(scores, key=scores.get)
+best_tree_size = min(scores, key=scores.get) # <== We get the min value from scores, then "key=scores.get" stores that min value (I think???)
 print(scores)
 print("----")
 print(best_tree_size)
